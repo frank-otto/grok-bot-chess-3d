@@ -1,0 +1,388 @@
+[
+  {
+    "id": "ital",
+    "group": "Openings",
+    "title": "Italian Game",
+    "fen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+    "task": "White to move: play the typical plan of the Italian Game.",
+    "solution": [
+      "c3"
+    ],
+    "accept": [
+      "c3",
+      "O-O",
+      "d3"
+    ],
+    "kind": "opening",
+    "explain": "4.c3 prepares d2–d4 and builds a strong pawn center (Giuoco Piano). 4.O-O or 4.d3 are also good, calm continuations."
+  },
+  {
+    "id": "span",
+    "group": "Openings",
+    "title": "Ruy López (Spanish Game)",
+    "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3",
+    "task": "White to move: which bishop move turns this into the Spanish Game?",
+    "solution": [
+      "Bb5"
+    ],
+    "accept": [
+      "Bb5"
+    ],
+    "kind": "opening",
+    "explain": "3.Bb5 attacks the knight on c6 – the defender of e5. That’s the Spanish Game (Ruy López)."
+  },
+  {
+    "id": "sizi",
+    "group": "Openings",
+    "title": "Sicilian Defense",
+    "fen": "rnbqkbnr/pp2pppp/3p4/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 0 3",
+    "task": "White to move: open the game like in the Open Sicilian.",
+    "solution": [
+      "d4"
+    ],
+    "accept": [
+      "d4"
+    ],
+    "kind": "opening",
+    "explain": "3.d4 cxd4 4.Nxd4 – White opens the center and gets quick development (Open Sicilian)."
+  },
+  {
+    "id": "dg",
+    "group": "Openings",
+    "title": "Queen’s Gambit",
+    "fen": "rnbqkbnr/ppp1pppp/8/3p4/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2",
+    "task": "White to move: offer the Queen’s Gambit.",
+    "solution": [
+      "c4"
+    ],
+    "accept": [
+      "c4"
+    ],
+    "kind": "opening",
+    "explain": "2.c4 attacks the central pawn on d5. If Black takes, White usually wins the pawn back and controls the center."
+  },
+  {
+    "id": "lon",
+    "group": "Openings",
+    "title": "London System",
+    "fen": "rnbqkb1r/ppp1pppp/5n2/3p4/3P4/5N2/PPP1PPPP/RNBQKB1R w KQkq - 2 3",
+    "task": "White to move: which bishop move is the trademark of the London System?",
+    "solution": [
+      "Bf4"
+    ],
+    "accept": [
+      "Bf4"
+    ],
+    "kind": "opening",
+    "explain": "3.Bf4 – the bishop comes out before e3. Then follow e3, c3, Bd3 and Nbd2: a solid, easy-to-learn system."
+  },
+  {
+    "id": "fra",
+    "group": "Openings",
+    "title": "French Defense",
+    "fen": "rnbqkbnr/pppp1ppp/4p3/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+    "task": "White to move: build the classic pawn center against the French.",
+    "solution": [
+      "d4"
+    ],
+    "accept": [
+      "d4"
+    ],
+    "kind": "opening",
+    "explain": "2.d4 – White puts two pawns in the center. Black strikes back with 2…d5."
+  },
+  {
+    "id": "caro",
+    "group": "Openings",
+    "title": "Caro-Kann Defense",
+    "fen": "rnbqkbnr/pp1ppppp/2p5/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+    "task": "White to move: take the center against the Caro-Kann.",
+    "solution": [
+      "d4"
+    ],
+    "accept": [
+      "d4"
+    ],
+    "kind": "opening",
+    "explain": "2.d4 d5 – Black prepares …d5 with c6 without locking in the c8 bishop. White secures the center first."
+  },
+  {
+    "id": "engl",
+    "group": "Openings",
+    "title": "English Opening",
+    "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "task": "White to move: open the English way!",
+    "solution": [
+      "c4"
+    ],
+    "accept": [
+      "c4"
+    ],
+    "kind": "opening",
+    "explain": "1.c4 – the English Opening controls d5 from the flank. White often follows with g3, Bg2 and Nc3 (fianchetto)."
+  },
+  {
+    "id": "gabel",
+    "group": "Tactics",
+    "title": "Knight fork",
+    "fen": "q3k3/5ppp/8/1N6/8/8/4PPPP/6K1 w - - 0 1",
+    "task": "White to move and win the queen.",
+    "solution": [
+      "Nc7+"
+    ],
+    "accept": [
+      "Nc7+"
+    ],
+    "kind": "tactic",
+    "explain": "1.Nc7+! attacks king and queen at the same time (fork). After the king moves, 2.Nxa8 follows."
+  },
+  {
+    "id": "fessel",
+    "group": "Tactics",
+    "title": "Pin",
+    "fen": "4k3/ppp2ppp/8/4q3/8/8/PPP2PPP/R4RK1 w - - 0 1",
+    "task": "White to move and win the queen.",
+    "solution": [
+      "Rae1"
+    ],
+    "accept": [
+      "Rae1",
+      "Rfe1"
+    ],
+    "kind": "tactic",
+    "explain": "1.Rae1! pins the queen to its king: it can’t leave the e-file and is lost for a rook."
+  },
+  {
+    "id": "spiess",
+    "group": "Tactics",
+    "title": "Skewer",
+    "fen": "8/5pp1/2k4q/8/8/8/5PPP/R5K1 w - - 0 1",
+    "task": "White to move and win the queen.",
+    "solution": [
+      "Ra6+"
+    ],
+    "accept": [
+      "Ra6+"
+    ],
+    "kind": "tactic",
+    "explain": "1.Ra6+! – check along the 6th rank. The king has to move, and the queen behind it falls: 2.Rxh6 (skewer)."
+  },
+  {
+    "id": "abzug",
+    "group": "Tactics",
+    "title": "Discovered attack",
+    "fen": "8/5ppk/4q3/8/4N3/8/5PPP/4R1K1 w - - 0 1",
+    "task": "White to move and win material.",
+    "solution": [
+      "Ng5+"
+    ],
+    "accept": [
+      "Ng5+",
+      "Nf6+"
+    ],
+    "kind": "tactic",
+    "explain": "1.Ng5+! – the knight gives check and at the same time opens the e-file: the rook on e1 attacks the queen (discovered attack)."
+  },
+  {
+    "id": "grund",
+    "group": "Tactics",
+    "title": "Back-rank mate",
+    "fen": "6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1",
+    "task": "White to move and mate.",
+    "solution": [
+      "Rd8#"
+    ],
+    "accept": [
+      "Rd8#"
+    ],
+    "kind": "tactic",
+    "explain": "1.Rd8# – Black’s own pawns on f7, g7, h7 lock the king in. A typical back-rank mate."
+  },
+  {
+    "id": "erstickt",
+    "group": "Tactics",
+    "title": "Smothered mate",
+    "fen": "6rk/6pp/8/4N3/8/8/5PPP/6K1 w - - 0 1",
+    "task": "White to move and mate.",
+    "solution": [
+      "Nf7#"
+    ],
+    "accept": [
+      "Nf7#"
+    ],
+    "kind": "tactic",
+    "explain": "1.Nf7# – the king is surrounded by its own pieces (“smothered”). Only a knight can deliver a mate like this."
+  },
+  {
+    "id": "doppel",
+    "group": "Tactics",
+    "title": "Double check",
+    "fen": "r2qkb1r/pp1n1ppp/8/8/4N3/8/PPP2PPP/4R1K1 w kq - 0 1",
+    "task": "White to move and mate.",
+    "solution": [
+      "Nd6#"
+    ],
+    "accept": [
+      "Nd6#",
+      "Nf6#"
+    ],
+    "kind": "tactic",
+    "explain": "1.Nd6# – double check by the knight and the rook on e1 (1.Nf6# works the same way). Against double check only a king move helps – and the king has no free square."
+  },
+  {
+    "id": "batterie",
+    "group": "Tactics",
+    "title": "Queen–bishop battery",
+    "fen": "r4rk1/5ppp/8/7Q/8/3B4/5PPP/6K1 w - - 0 1",
+    "task": "White to move and mate.",
+    "solution": [
+      "Qxh7#"
+    ],
+    "accept": [
+      "Qxh7#"
+    ],
+    "kind": "tactic",
+    "explain": "1.Qxh7# – the bishop on d3 covers h7, the rook on f8 blocks the escape. A classic mate on h7."
+  },
+  {
+    "id": "bgabel",
+    "group": "Tactics",
+    "title": "Pawn fork",
+    "fen": "6k1/pp3ppp/2n1b3/8/3PP3/8/5PPP/3R2K1 w - - 0 1",
+    "task": "White to move and win a piece.",
+    "solution": [
+      "d5"
+    ],
+    "accept": [
+      "d5"
+    ],
+    "kind": "tactic",
+    "explain": "1.d5! attacks the knight on c6 and the bishop on e6 at the same time (pawn fork). One piece is lost."
+  },
+  {
+    "id": "kdk",
+    "group": "Endgames",
+    "title": "King + queen vs king",
+    "fen": "7k/5K2/8/6Q1/8/8/8/8 w - - 0 1",
+    "task": "White to move and mate – but beware of stalemate!",
+    "solution": [
+      "Qg7#"
+    ],
+    "accept": [
+      "Qg7#",
+      "Qg8#",
+      "Qh5#",
+      "Qh6#"
+    ],
+    "anyMate": true,
+    "kind": "endgame",
+    "explain": "E.g. 1.Qg7# or 1.Qg8# (both protected by the king on f7) or 1.Qh5#/1.Qh6#. Careful: 1.Qg6?? would be stalemate – Black would have no move without being in check!"
+  },
+  {
+    "id": "ktk",
+    "group": "Endgames",
+    "title": "King + rook vs king",
+    "fen": "4k3/8/4K3/8/8/8/8/7R w - - 0 1",
+    "task": "White to move and mate.",
+    "solution": [
+      "Rh8#"
+    ],
+    "accept": [
+      "Rh8#"
+    ],
+    "kind": "endgame",
+    "explain": "1.Rh8# – the white king stands in opposition and covers d7, e7, f7; the rook controls the whole 8th rank."
+  },
+  {
+    "id": "treppe",
+    "group": "Endgames",
+    "title": "Two rooks: ladder mate",
+    "fen": "7k/R7/8/8/8/8/8/1R4K1 w - - 0 1",
+    "task": "White to move and mate.",
+    "solution": [
+      "Rb8#"
+    ],
+    "accept": [
+      "Rb8#"
+    ],
+    "kind": "endgame",
+    "explain": "1.Rb8# – the rook on a7 seals the 7th rank, the second rook mates on the 8th rank. That’s how you “ladder” the king to the edge with two rooks."
+  },
+  {
+    "id": "oppo",
+    "group": "Endgames",
+    "title": "Opposition",
+    "fen": "8/8/4k3/8/8/4K3/4P3/8 w - - 0 1",
+    "task": "White to move and win – king in front of the pawn!",
+    "solution": [
+      "Ke4"
+    ],
+    "accept": [
+      "Ke4",
+      "Kd4",
+      "Kf4"
+    ],
+    "kind": "endgame",
+    "explain": "1.Ke4! (also 1.Kd4 or 1.Kf4) – the king goes IN FRONT of its pawn. Thanks to the spare move e2–e3, White later gains the opposition and pushes the black king aside. A passive move like 1.Kf3? only draws."
+  },
+  {
+    "id": "lucena",
+    "group": "Endgames",
+    "title": "Lucena position (building a bridge)",
+    "fen": "1K6/1P1k4/8/8/8/8/r7/2R5 w - - 0 1",
+    "task": "White to move and win – build the bridge!",
+    "solution": [
+      "Rd1+"
+    ],
+    "accept": [
+      "Rd1+"
+    ],
+    "kind": "endgame",
+    "explain": "1.Rd1+ Ke7 2.Rd4! Ra1 3.Kc7 Rc1+ 4.Kb6 Rb1+ 5.Kc6 Rc1+ 6.Kb5 Rb1+ 7.Rb4 – the rook builds the “bridge” against the checks."
+  },
+  {
+    "id": "philidor",
+    "group": "Endgames",
+    "title": "Philidor position",
+    "fen": "4k3/R7/8/3KP3/8/8/8/1r6 b - - 0 1",
+    "task": "Black to move and hold the draw.",
+    "solution": [
+      "Rb6"
+    ],
+    "accept": [
+      "Rb6"
+    ],
+    "kind": "endgame",
+    "explain": "1…Rb6! – the rook holds the 6th rank and keeps the white king from advancing. If the pawn moves to e6, the rook checks from behind (…Rb1)."
+  },
+  {
+    "id": "quadrat",
+    "group": "Endgames",
+    "title": "Rule of the square",
+    "fen": "8/8/8/5k2/P7/8/8/7K w - - 0 1",
+    "task": "White to move and win: can the black king reach the square?",
+    "solution": [
+      "a5"
+    ],
+    "accept": [
+      "a5"
+    ],
+    "kind": "endgame",
+    "explain": "1.a5! – the king on f5 can no longer reach the pawn’s square (a5–d5–d8–a8): 1…Ke6 2.a6 Kd7 3.a7 Kc7 4.a8=Q. If White moves the king instead (1.Kg2?), Black steps into the square with 1…Ke5 and catches the pawn."
+  },
+  {
+    "id": "durch",
+    "group": "Endgames",
+    "title": "Pawn breakthrough",
+    "fen": "7k/ppp5/8/PPP5/8/8/8/7K w - - 0 1",
+    "task": "White to move and win.",
+    "solution": [
+      "b6"
+    ],
+    "accept": [
+      "b6"
+    ],
+    "kind": "endgame",
+    "explain": "1.b6! cxb6 (1…axb6 2.c6! bxc6 3.a6) 2.a6! bxa6 3.c6 – one of the pawns runs through to promote."
+  }
+]

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Grok Bot Chess 3D — real 3D chess vs Grok Bot with a Stockfish coach" />
+  <title>Grok Bot Chess 3D</title>
+  <link rel="stylesheet" href="css/grok3d.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2312182b'/%3E%3Cpath d='M32 6v12M26 10h12' stroke='%23ffd166' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='36' r='16' fill='%23f3efff'/%3E%3Ccircle cx='26' cy='35' r='3.5' fill='%232de2e6'/%3E%3Ccircle cx='38' cy='35' r='3.5' fill='%232de2e6'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <span class="orb" aria-hidden="true"></span>
+        <div>
+          <h1>Grok Bot Chess <span class="tag3d">3D</span></h1>
+          <p class="sub">Classic rules · real 3D bots · zero mercy (except on “Easy”)</p>
+        </div>
+      </div>
+      <div class="status">
+        <span id="dot" class="turn-dot w"></span>
+        <span id="turn" class="turn white">White to move</span>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="stage-wrap">
+        <div id="stage" class="stage">
+          <div class="loading"><span class="spinner"></span>Loading 3D bots…</div>
+          <div id="tooltip" class="tooltip" hidden></div>
+        </div>
+        <p class="hint">Click a piece → glowing squares = legal moves → click the target · drag = rotate camera · scroll = zoom · <kbd>U</kbd> undo · <kbd>N</kbd> new · <kbd>H</kbd> hints · <kbd>Esc</kbd> deselect</p>
+      </section>
+
+      <aside class="panel">
+        <div class="grok">
+          <div id="avatar" class="avatar" data-mood="idle" aria-hidden="true">
+            <svg viewBox="0 0 120 120">
+              <defs>
+                <radialGradient id="avHead" cx="40%" cy="30%" r="80%">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="60%" stop-color="#d9d4ff"/>
+                  <stop offset="100%" stop-color="#8f86d9"/>
+                </radialGradient>
+                <linearGradient id="avVisor" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1a1440"/>
+                  <stop offset="100%" stop-color="#05060f"/>
+                </linearGradient>
+              </defs>
+              <line x1="60" y1="20" x2="60" y2="6" stroke="#9aa3c7" stroke-width="3" stroke-linecap="round"/>
+              <circle class="av-led" cx="60" cy="6" r="5" fill="#ff3da8"/>
+              <rect x="18" y="22" width="84" height="76" rx="30" fill="url(#avHead)" stroke="#ffffff" stroke-opacity=".6" stroke-width="1.5"/>
+              <rect x="10" y="50" width="10" height="22" rx="5" fill="#2de2e6"/>
+              <rect x="100" y="50" width="10" height="22" rx="5" fill="#ff3da8"/>
+              <rect x="28" y="40" width="64" height="38" rx="18" fill="url(#avVisor)"/>
+              <g class="av-eyes">
+                <ellipse class="av-eye" cx="47" cy="58" rx="7" ry="8.5" fill="#2de2e6"/>
+                <ellipse class="av-eye" cx="73" cy="58" rx="7" ry="8.5" fill="#2de2e6"/>
+              </g>
+              <path class="av-mouth" d="M48 86 Q60 94 72 86" fill="none" stroke="#5b4fb3" stroke-width="3.5" stroke-linecap="round"/>
+              <circle cx="32" cy="84" r="4" fill="#ff9ec8" opacity=".6"/>
+              <circle cx="88" cy="84" r="4" fill="#ff9ec8" opacity=".6"/>
+            </svg>
+          </div>
+          <div class="grok-meta">
+            <div class="grok-name">Grok Bot <span class="online">● online</span></div>
+            <div id="bubble" class="bubble">Hi! I’m Grok Bot.</div>
+          </div>
+        </div>
+
+        <h2>Game mode</h2>
+        <div class="seg">
+          <button type="button" id="btnBot" class="btn active">vs Grok Bot</button>
+          <button type="button" id="btnPvp" class="btn">Player vs Player</button>
+        </div>
+
+        <div id="levelRow">
+          <h2>Difficulty</h2>
+          <div class="seg three">
+            <button type="button" class="btn" data-level="1">Easy</button>
+            <button type="button" class="btn active" data-level="2">Medium</button>
+            <button type="button" class="btn" data-level="3">Hard</button>
+          </div>
+        </div>
+
+        <div id="rotateRow" style="display:none">
+          <label class="check"><input type="checkbox" id="chkRotate" checked /> Rotate board to the player to move</label>
+        </div>
+        <label class="check"><input type="checkbox" id="chkHints" checked /> Show move hints <kbd>H</kbd></label>
+
+        <h2>Coach</h2>
+        <div class="coach">
+          <div class="coach-row">
+            <button type="button" id="btnCoach" class="btn coach-btn">🎓 Best move?</button>
+            <label class="check small"><input type="checkbox" id="chkHintOnly" /> Hint only</label>
+          </div>
+          <div id="coachOut" class="coach-out" aria-live="polite" hidden></div>
+          <div class="coach-chat">
+            <div id="coachLog" class="coach-log" aria-live="polite" aria-label="Coach conversation"></div>
+            <div class="coach-ask">
+              <input type="text" id="coachQ" placeholder="Ask the coach … e.g. “What is threatened?”" aria-label="Question for the coach" autocomplete="off" />
+              <button type="button" id="btnAsk" class="btn small">Ask</button>
+            </div>
+            <div class="coach-voice">
+              <button type="button" id="btnMic" class="btn small mic">🎙️ Ask by voice</button>
+              <button type="button" id="btnStopVoice" class="btn small" hidden>⏹️ Stop</button>
+              <label class="check small"><input type="checkbox" id="chkSpeak" checked /> Read answers aloud</label>
+              <label class="check small"><input type="checkbox" id="chkKids" /> Kids mode</label>
+            </div>
+            <div class="coach-chips">
+              <button type="button" class="chip" data-ask="What should I play?">What should I play?</button>
+              <button type="button" class="chip" data-ask="What is threatened?">What is threatened?</button>
+              <button type="button" class="chip" data-ask="Who is better?">Who is better?</button>
+              <button type="button" class="chip" data-ask="Was my last move a mistake?">Last move ok?</button>
+            </div>
+          </div>
+          <div class="seg coach-tools">
+            <button type="button" id="btnPresets" class="btn small">📚 Practice positions</button>
+            <button type="button" id="btnAnalyse" class="btn small">📊 Quick analysis</button>
+            <button type="button" id="btnExport" class="btn small">📋 Copy position</button>
+            <button type="button" id="btnImport" class="btn small">📥 Load position</button>
+          </div>
+        </div>
+
+        <h2>Look &amp; effects</h2>
+        <div class="seg skins" id="skinRow">
+          <button type="button" class="btn small active" data-skin="neon">✨ Neon gloss</button>
+          <button type="button" class="btn small" data-skin="chrome">🪩 Liquid chrome</button>
+          <button type="button" class="btn small" data-skin="glass">🔮 Glass &amp; circuits</button>
+          <button type="button" class="btn small" data-skin="lava">🌋 Lava core</button>
+        </div>
+        <div class="seg fxrow">
+          <span class="seg-label">Effects:</span>
+          <button type="button" class="btn small active" data-fx="full">Full</button>
+          <button type="button" class="btn small" data-fx="reduced">Reduced</button>
+        </div>
+        <div class="sliders">
+          <label class="slider" for="rngBright"><span>Brightness</span><input type="range" id="rngBright" min="60" max="120" step="1" value="85" aria-label="Brightness in percent" /><output id="outBright">85%</output></label>
+          <label class="slider" for="rngGlow"><span>Glow</span><input type="range" id="rngGlow" min="0" max="100" step="1" value="60" aria-label="Glow in percent" /><output id="outGlow">60%</output></label>
+        </div>
+        <label class="check"><input type="checkbox" id="chkGiant" checked /> Giant Grok in the background</label>
+        <label class="check"><input type="checkbox" id="chkBubbles" checked /> Piece quips (speech bubbles)</label>
+
+        <div class="actions">
+          <button type="button" id="btnNew" class="btn primary">New game <kbd>N</kbd></button>
+          <button type="button" id="undo" class="btn" disabled>Undo move <kbd>U</kbd></button>
+          <button type="button" id="btnShot" class="btn shot">📸 Share screenshot</button>
+          <div class="seg three">
+            <button type="button" id="btnCam" class="btn small">🎥 Camera</button>
+            <button type="button" id="btnMute" class="btn small active">🔊 Sound on</button>
+            <button type="button" id="btnMusic" class="btn small">🎵 Music off</button>
+          </div>
+        </div>
+
+        <h2>Captured</h2>
+        <div class="caps">
+          <div class="cap-row"><span class="who">White:</span><span id="capByW" class="glyphs"></span></div>
+          <div class="cap-row"><span class="who">Black:</span><span id="capByB" class="glyphs"></span></div>
+          <div id="adv" class="adv">Material: equal</div>
+        </div>
+
+        <h2>Moves</h2>
+        <div id="moves" class="moves"></div>
+      </aside>
+    </main>
+    <footer class="foot">Grok Bot Chess · runs fully offline in your browser · screenshots are saved locally only · <a href="https://github.com/frank-otto/grok-bot-chess-3d" target="_blank" rel="noopener">source (GPL-3.0)</a></footer>
+  </div>
+
+  <div id="endOverlay" class="overlay" role="dialog" aria-modal="true">
+    <div class="modal endcard">
+      <div class="end-confetti" aria-hidden="true"></div>
+      <div id="endAvatar" class="avatar big" data-mood="happy" aria-hidden="true"></div>
+      <h3 id="endTitle">Checkmate!</h3>
+      <p id="endResult" class="end-result"></p>
+      <div class="end-quote-wrap">
+        <div class="end-quote-label">Grok Bot says:</div>
+        <div id="endQuote" class="end-quote"></div>
+      </div>
+      <div class="modal-row">
+        <button type="button" id="btnEndNew" class="btn primary">New game</button>
+        <button type="button" id="btnEndShot" class="btn shot">📸 Share screenshot</button>
+      </div>
+      <div id="endExtra" class="modal-row"></div>
+      <button type="button" id="btnEndClose" class="btn linkish">View board</button>
+    </div>
+  </div>
+
+  <div id="fenOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="fenTitle">
+    <div class="modal wide">
+      <h3 id="fenTitle">Copy position</h3>
+      <p id="copyStatus" class="copy-status"></p>
+      <label class="fld">FEN (current position)<textarea id="fenOut" rows="2" readonly></textarea></label>
+      <div class="modal-row left"><button type="button" class="btn small" id="btnCopyFen">Copy FEN</button></div>
+      <label class="fld">PGN (whole game)<textarea id="pgnOut" rows="6" readonly></textarea></label>
+      <div class="modal-row left"><button type="button" class="btn small" id="btnCopyPgn">Copy PGN</button></div>
+      <div class="modal-row"><button type="button" class="btn" data-close="fenOverlay">Close</button></div>
+    </div>
+  </div>
+  <div id="loadOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="loadTitle">
+    <div class="modal wide">
+      <h3 id="loadTitle">Load position</h3>
+      <p>Paste a FEN (e.g. from lichess) – or a whole PGN. The game then continues from that position.</p>
+      <label class="fld">FEN or PGN<textarea id="fenIn" rows="4" placeholder="rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1"></textarea></label>
+      <p id="fenErr" class="fen-err" role="alert"></p>
+      <div class="modal-row"><button type="button" class="btn primary" id="btnFenLoad">Load</button><button type="button" class="btn" data-close="loadOverlay">Cancel</button></div>
+    </div>
+  </div>
+  <div id="presetOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="presetTitle">
+    <div class="modal wide presets">
+      <h3 id="presetTitle">Practice positions</h3>
+      <p>Pick a puzzle – the coach checks your move. “Show solution” reveals the answer.</p>
+      <div id="presetList" class="preset-list"></div>
+      <div class="modal-row"><button type="button" class="btn" data-close="presetOverlay">Close</button></div>
+    </div>
+  </div>
+  <div id="promoOverlay" class="overlay" role="dialog" aria-modal="true">
+    <div class="modal">
+      <h3>Promotion! 🚀</h3>
+      <p>Your pawn bot gets an upgrade. Choose:</p>
+      <div id="promoChoices" class="promo"></div>
+    </div>
+  </div>
+
+  <!-- Classic scripts only: works by double-click (file://), no server needed -->
+  <script>
+    // reuse the panel avatar SVG for the end card
+    document.getElementById('endAvatar').innerHTML = document.getElementById('avatar').innerHTML.replace(/id="av(Head|Visor)"/g, 'id="avE$1"').replace(/url\(#av(Head|Visor)\)/g, 'url(#avE$1)');
+  </script>
+  <script src="js/chess-engine.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/ai-worker-src.js"></script>
+  <script src="js/app3d.bundle.js"></script>
+</body>
+</html>
