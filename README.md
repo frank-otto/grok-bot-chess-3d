@@ -6,6 +6,10 @@ but still instantly recognizable as a classic chess piece.
 
 **▶ Play in your browser: https://frank-otto.github.io/grok-bot-chess-3d/**
 
+## About this public version
+
+This is the public, standalone edition. My personal version is a bit different: it's connected to my own Grok Bot (my AI coach, which I can talk to while playing) and uses different voices. This public build runs fully in your browser, with no account, no API and no costs.
+
 ## Run locally (offline)
 - Download / clone this repo and **double-click `index.html`**. It runs straight from `file://`, fully offline –
   classic scripts only, no build step, no server, no internet needed.
@@ -59,3 +63,5 @@ Echtes 3D-Schach (Oberfläche auf Englisch) gegen Grok Bot (leicht / mittel / sc
 3D-Pfeilen + Begründung), Hinweis-Modus, FEN/PGN kopieren & laden, 25 Übungsstellungen und Kurzanalyse nach der Partie.
 **Online spielen:** https://frank-otto.github.io/grok-bot-chess-3d/ · **Offline:** `index.html` doppelklicken.
 Lizenz: GPL-3.0 (wegen Stockfish), three.js unter MIT.
+
+**Hinweis:** Meine eigene Version ist etwas anders – sie ist mit meinem Grok Bot verbunden und nutzt andere Stimmen. Diese öffentliche Version läuft komplett im Browser, ohne Konto, API oder Kosten.
