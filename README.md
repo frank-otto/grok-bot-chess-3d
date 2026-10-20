@@ -4,7 +4,7 @@ Real 3D chess (Three.js / WebGL) against **Grok Bot** – or two players on one 
 **Stockfish coach**, hints, practice positions and post-game analysis. Every piece is a little bot character,
 but still instantly recognizable as a classic chess piece.
 
-**▶ Play in your browser: https://frank-otto.github.io/grok-bot-chess-3d/**
+**▶ Play in your browser: [online version (GitHub Pages)](https://frank-otto.github.io/grok-bot-chess-3d/)**
 
 ## About this public version
 
@@ -46,7 +46,7 @@ This is the public, standalone edition. My personal version is a bit different: 
   `../grok-bot-chess-build/` (or point `NODE_PATH` at your `node_modules`), then run `node tools/build.mjs`.
 
 ## Credits
-Made with Grok Bot by [@Frank_AI_Lab](https://x.com/Frank_AI_Lab) (Frank Otto).
+Made with Grok Bot by [@Frank_AI_Lab](https://x.com/Frank_AI_Lab).
 
 ## License
 - This project is licensed under the **GNU General Public License v3.0** – see [LICENSE](LICENSE).
@@ -61,7 +61,7 @@ Made with Grok Bot by [@Frank_AI_Lab](https://x.com/Frank_AI_Lab) (Frank Otto).
 ## Kurz auf Deutsch
 Echtes 3D-Schach (Oberfläche auf Englisch) gegen Grok Bot (leicht / mittel / schwer) oder zu zweit – mit Stockfish-Coach (bester Zug mit
 3D-Pfeilen + Begründung), Hinweis-Modus, FEN/PGN kopieren & laden, 25 Übungsstellungen und Kurzanalyse nach der Partie.
-**Online spielen:** https://frank-otto.github.io/grok-bot-chess-3d/ · **Offline:** `index.html` doppelklicken.
+**Online spielen:** [online version (GitHub Pages)](https://frank-otto.github.io/grok-bot-chess-3d/) · **Offline:** `index.html` doppelklicken.
 Lizenz: GPL-3.0 (wegen Stockfish), three.js unter MIT.
 
 **Hinweis:** Meine eigene Version ist etwas anders – sie ist mit meinem Grok Bot verbunden und nutzt andere Stimmen. Diese öffentliche Version läuft komplett im Browser, ohne Konto, API oder Kosten.
